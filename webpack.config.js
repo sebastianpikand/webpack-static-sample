@@ -124,9 +124,10 @@ module.exports = (env) => {
         template: path.join(__dirname, 'public/index.html'),
         filename: './index.html',
       }),
+      // including all sub-pages in their own folder to have nice url paths (e.g. /sub-page instead of /sub-page.html)
       new HtmlWebPackPlugin({
-        template: path.join(__dirname, 'public/assets/html/sub-page.html'),
-        filename: './sub-page.html',
+        template: path.join(__dirname, 'public/sub-page/index.html'),
+        filename: './sub-page/index.html',
       }),
       //
       new CopyPlugin({
