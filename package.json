@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development --display-error-details --env.TARGET_ENV=local",
-    "build:production": "npm-run-all --sequential clean compile:production --parallel",
-    "build:development": "npm-run-all --sequential clean compile:development --parallel",
-    "compile:production": "webpack --env.TARGET_ENV=production",
-    "compile:development": "webpack --env.TARGET_ENV=development",
+    "deploy:production": "npm-run-all --sequential clean build:production dist:production",
+    "deploy:development": "npm-run-all --sequential clean build:development dist:development",
+    "build:production": "webpack --env.TARGET_ENV=production",
+    "build:development": "webpack --env.TARGET_ENV=development",
+    "dist:development:": "aws s3  cp --recursive ./dist s3://dev.site.com",
+    "dist:production:": "aws s3  cp --recursive ./dist s3://site.com",
     "clean": "rimraf ./dist"
   },
   "author": "Sebastian Pikand",
